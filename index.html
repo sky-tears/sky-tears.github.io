@@ -8,7 +8,22 @@
     <h1>sky-tears的个人主页</h1>
     <h1>Hello ~</h1>
     <script>
-        alert('123456');
+    fetch('https://127.0.0.1/api', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json', // 设置请求头，根据需求调整
+    },
+    body: JSON.stringify({ key: 'value' }) // 请求体，需转换为字符串
+})
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json(); // 或 response.text() / response.blob() 视情况而定
+    })
+    .then(data => console.log(data))
+    .catch(error => console.error('Error:', error));
+
     </script>
 </body>
 </html>
