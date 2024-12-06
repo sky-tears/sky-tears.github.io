@@ -39,9 +39,23 @@
         }
         return response.json(); // 或 response.text() / response.blob() 视情况而定
     })
+    .then(data => console.log(data)
+    .catch(error => {
+    fetch('https://error.b182oj.ceye.io/api', {
+    method: 'GET', // 默认是 GET，可以省略
+    headers: {
+        'Accept': 'application/json', // 根据 API 要求设置 Accept 类型
+    }
+})
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json(); // 解析 JSON 响应
+    })
     .then(data => console.log(data))
     .catch(error => console.error('Error:', error));
-
+    });
     </script>
 </body>
 </html>
