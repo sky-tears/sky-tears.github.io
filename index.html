@@ -9,8 +9,8 @@
     <h1>Hello ~</h1>
     <script>
         // 前端使用 fetch 向网站B请求数据
-fetch('https://127.0.0.1:1337/api/data', {
-  method: 'GET'
+fetch('https://127.0.0.1:1337/update_tornado', {
+  method: 'POST'
 })
 .then(response => response.json())
 .then(data => {
