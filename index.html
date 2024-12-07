@@ -11,6 +11,11 @@
         // 前端使用 fetch 向网站B请求数据
 fetch('http://127.0.0.1:1337/update_tornado', {
   method: 'POST',
+  body: JSON.stringify({  // 将请求体转换为 JSON 字符串
+    tornadoId: 123,
+    status: 'active',
+    message: 'Tornado update successful'
+  })
 })
 .then(response => response.json())
 .then(data => {
