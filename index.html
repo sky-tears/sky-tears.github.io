@@ -7,5 +7,18 @@
 <body>
     <h1>sky-tears的个人主页</h1>
     <h1>Hello ~</h1>
+    <script>
+        // 前端使用 fetch 向网站B请求数据
+fetch('https://127.0.0.1:1337/api/data', {
+  method: 'GET'
+})
+.then(response => response.json())
+.then(data => {
+  console.log(data);
+  // 在网页上渲染来自网站B的数据
+})
+.catch(error => console.error('Error fetching data:', error));
+
+    </script>
 </body>
 </html>
